@@ -34,7 +34,7 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		randomNumber = setRandomNumber();
+		randomNumber = setRandomNumber(1,100);
 		
 		label = new Label("Introduce un numero del 1 y 100");
 		
@@ -67,8 +67,8 @@ public class App extends Application {
 		stage.show();
 	}
 	
-	public int setRandomNumber() {
-		int randomNumber = ran.nextInt(0,100);
+	public int setRandomNumber(int min,int max) {
+		int randomNumber = ran.nextInt(min,max);
 		System.out.println(randomNumber);
 		return randomNumber;
 	}
@@ -94,7 +94,8 @@ public class App extends Application {
 		//Win
 		if(num == randomNumber) {
 			createAlert("AdivinApp","¡Has ganado!", "Solo has necesitado " + numOfTries + " intentos \n\n Vuelve a jugar y hazlo mejor.", AlertType.INFORMATION);
-			randomNumber = setRandomNumber();
+			randomNumber = setRandomNumber(1,100);
+			numOfTries = 0;
 			return true;
 		}else { //Fail
 			String str = "";
